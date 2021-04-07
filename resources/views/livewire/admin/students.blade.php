@@ -1,5 +1,6 @@
 
 @include('livewire.admin.student-create')
+@include('livewire.admin.student-update')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -63,7 +64,7 @@
                     <th>Mobile</th>
                     <th>Address</th>
                     <th>Image</th>
-                    {{-- <th>Staus</th> --}}
+                    <th>Staus</th>
                     <th>Action</th>
                   </tr>
                   </thead>
@@ -75,24 +76,22 @@
                     <td>{{ $student->name }}</td>
                     <td>{{ $student->email }}</td>
                     <td>{{ $student->mobile }} </td>
-                    <td>{{ $student->address }}</td>
+                    <td width="15%">{{ $student->address }}</td>
                    <td  class="text-center"><img src="{{ asset('upload/student/')}}/{{ $student->image }}" width="60"> </td>
                     
-                    {{-- <td> 
+                    <td> 
                       @if($student->status==1)
                      <span class=" badge badge-success p-2">Active</span> 
                      @else
                       <span class=" badge badge-danger p-2">Inactive</span> 
                      </td>
-                     @endif --}}
+                     @endif
                     <td> 
-                    {{--   @if($student->status==1)
-                      <a  href="{{ route('students.inactive',$student->id) }}" class="btn btn-warning btn-sm"><i class="fas fa-arrow-down"></i></a>
-                      @else
-                      <a  href="{{ route('students.active',$student->id) }}" class="btn btn-success btn-sm"><i class="fas fa-arrow-up"></i></a>
-                      @endif --}}
-                        <a  href="{{ route('student.edit',$student->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
-                         {{-- <a  href="{{ route('students.delete',$student->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a> --}}
+              
+                        <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#updatestudentModal" wire:click.prevent="edit({{ $student->id }})"> Edit
+                       </button>
+                       <button type="button" class="btn btn-danger" wire:click.prevent="delete({{$student->id}})">Delete</button>
+                      
                     </td>
                   </tr>
                   
@@ -136,6 +135,5 @@
     <!-- /.content -->
   </div>
   <!-- /.content-wrapper -->
-
 
 

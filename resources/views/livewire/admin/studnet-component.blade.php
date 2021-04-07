@@ -1,5 +1,6 @@
 
 @include('livewire.admin.student-create')
+@include('livewire.admin.student-update')
   <!-- Content Wrapper. Contains page content -->
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
@@ -76,10 +77,7 @@
                     <td>{{ $student->email }}</td>
                     <td>{{ $student->mobile }} </td>
                     <td>{{ $student->address }}</td>
-                    <td style="text-align: center;"><img style="width: 50px;height: 60px" class="student-image-img img-fluid img-circle"
-                       src="{{(!empty($student->image))?url('upload/studentimage/'.$student->image):url('upload/usernoimage.png')}}"
-                       alt="image profile picture">
-                     </td>
+                   <td  class="text-center"><img src="{{ asset('upload/student/')}}/{{ $student->image }}" width="60"> </td>
                     
                     {{-- <td> 
                       @if($student->status==1)
@@ -94,7 +92,8 @@
                       @else
                       <a  href="{{ route('students.active',$student->id) }}" class="btn btn-success btn-sm"><i class="fas fa-arrow-up"></i></a>
                       @endif --}}
-                        <a  href="{{ route('student.edit',$student->id) }}" class="btn btn-primary btn-sm"><i class="fas fa-edit"></i></a>
+                        <button type="button" class="btn btn-warning " data-toggle="modal" data-target="#updatestudentModal"  wire:click.prevent="edit({{ $student->id }})"> <i class="fa fa-edit"></i>
+                </button>
                          {{-- <a  href="{{ route('students.delete',$student->id) }}" class="btn btn-danger btn-sm"><i class="fas fa-trash"></i></a> --}}
                     </td>
                   </tr>

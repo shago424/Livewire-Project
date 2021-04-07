@@ -64,12 +64,12 @@
                   <p>Student List</p>
                 </a>
               </li>
-              {{-- <li class="nav-item">
-                <a href="{{ route('post.add') }}"class="nav-link {{($route=='post.add')?'active':''}}">
+              <li class="nav-item">
+                <a href="{{ route('students.view') }}"class="nav-link {{($route=='students.view')?'active':''}}">
                   <i class="far fa-circle nav-icon"></i>
-                  <p>Add Teacher</p>
+                  <p>Student View</p>
                 </a>
-              </li> --}}
+              </li>
             </ul>
           </li>
               

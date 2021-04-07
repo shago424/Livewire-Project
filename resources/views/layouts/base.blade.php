@@ -274,7 +274,10 @@ Swal.fire({
 <script>
   window.livewire.on('studentAdded',()=>{
     $('#addstudentModal').modal('hide');
-  })
+  });
+   window.livewire.on('studentUpdated',()=>{
+    $('#updatestudentModal').modal('hide');
+  });
 </script>
   @stack('scripts')
 </body>
