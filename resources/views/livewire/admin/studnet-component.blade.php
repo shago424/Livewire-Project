@@ -2,6 +2,12 @@
 @include('livewire.admin.student-create')
 @include('livewire.admin.student-update')
   <!-- Content Wrapper. Contains page content -->
+  
+ <style type="text/css">
+  nav svg{
+    height: 20px;
+  }
+ </style>
   <div class="content-wrapper">
     <!-- Content Header (Page header) -->
     <div class="content-header">
@@ -36,15 +42,18 @@
             <!-- Custom tabs (Charts with tabs)-->
              <div class="panel" style=" background: white">
               <div class="panel-header p-2" style="background-color: #0A4833;color: white">
-                <h4>Student List
-                  <button type="button" class="btn btn-warning float-right" data-toggle="modal" data-target="#addstudentModal"> <i class="fa fa-plus-circle"></i>
+               <div class="row">
+                  <div class="col-md-8">
+                    <h4>Student List
+                  <button type="button" class="btn btn-primary float-right" data-toggle="modal" data-target="#addstudentModal"> <i class="fa fa-plus-circle"></i>
                   Add Student
                 </button>
-
-               {{--  <a href="{{ route('student.add') }}" class=" btn btn-warning float-right"><i class="fa fa-plus-circle"></i>
-                  Add student
-                </a> --}}
                </h4>
+                  </div>
+                  <div class="col-md-4">
+                    <input type="text" class="form-control"  placeholder="Search...." wire:model="searchTerm">
+                  </div>
+                </div>
               </div><!-- /.panel-header -->
               @if(session('message'))
                 <div class="alert alert-success alert-dismissible fade show" role="alert">
@@ -54,7 +63,7 @@
                 @endif
               <div class="panel-body p-3">
 
-            <table id="example1" class="table table-bordered table-hover table-sm">
+            <table id="example11" class="table table-bordered table-hover table-sm">
                   <thead>
                   <tr style="background-color: #210C4C;color: white">
                     <th >SL</th>
@@ -115,6 +124,7 @@
                   </tr>
                   </tfoot> --}}
                 </table>
+                 {{ $students->links() }}
                 </div>
               </div>
             <!-- /.card -->

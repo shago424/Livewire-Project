@@ -1,6 +1,5 @@
-
-
-<div  class="modal fade" id="updatestudentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
+<div>
+  <div  class="modal fade" id="updatestudentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
   <div class="modal-dialog">
     <div class="modal-content">
       <div class="modal-header" style="background-color: lightgreen;">
@@ -10,16 +9,12 @@
         </button>
       </div>
       <div class="modal-body">
-         @if(Session::has('message'))
-          <div class="alert alert-success">
-            <strong> Success  :</strong> {{ Session('message') }}
-          </div>
-          @endif
+       
         <form enctype="multipart/form-data">
                   @csrf
                   
                 <div class="form-row">
-                  <input type="text" name="id" wire:model="ids">
+                  <input type="hidden" name="id" wire:model="ids">
                   <div class="form-group col-md-12">
                     <label for="name">Name</label>
                     <input type="name"class="form-control"  name="name" id="name" placeholder="Enter name" value="" wire:model="name">
@@ -60,10 +55,11 @@
                     <input type="file" class="form-control" wire:model="image">
                      @error('image') <p class="text-danger">{{ $message }}</p>@enderror
                   </div>
-                  @if($image)
-                  <img style="margin-left: 200px" src="{{ $image->temporaryUrl() }}" width="60px">
-                  @endif
-                  </div>
+               {{-- @if($newimage)
+          <img style="margin-left: 200px" src="{{ $newimage->temporaryUrl() }}" width="120px">
+          @else
+          <img style="margin-left: 200px" src="{{ asset('upload/student') }}/{{ $image }}" width="102">
+          @endif --}}
                  
                    </form>
                   </div>
@@ -76,4 +72,5 @@
       </div>
     </div>
   </div>
+</div>
 </div>

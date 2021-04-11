@@ -7,6 +7,7 @@ use App\Models\Student;
 use Carbon\Carbon;
 Use Livewire\WithFileUploads; 
 use Auth;
+use Livewire\WithPagination;
 class Students extends Component
 {
     use WithFileUploads;
@@ -20,6 +21,7 @@ class Students extends Component
 	public $image;
 	public $updated_by;
 	public $newimage;
+	public $searchItem;
 
 	public function mount(){
 		$this->status = 1;
@@ -151,9 +153,13 @@ class Students extends Component
 			session()->flash('message','Student Deleted Successful');
 		}
 	}
+
+	use WithPagination;
+
     public function render()
     {
-    	$students = Student::orderby('id','DESC')->get();
+    	$searchItem = '%'.$this->searchItem.'%';
+    	$students = Student::where('name','LIKE', $searchItem)->where('email','LIKE',$searchItem)->where('mobile','LIKE',$searchItem)->where('address','LIKE',$searchItem)->orderby('id','DESC')->paginate(10);
         return view('livewire.admin.students',['students' => $students])->layout('layouts.base');
     }
 }

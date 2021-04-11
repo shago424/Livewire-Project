@@ -1,4 +1,5 @@
-
+<div>
+  
 
 <div  class="modal fade" id="addstudentModal" tabindex="-1" aria-labelledby="exampleModalLabel" aria-hidden="true" wire:ignore.self>
   <div class="modal-dialog">
@@ -10,11 +11,7 @@
         </button>
       </div>
       <div class="modal-body">
-         @if(Session::has('message'))
-          <div class="alert alert-success">
-            <strong> Success  :</strong> {{ Session('message') }}
-          </div>
-          @endif
+        
         <form enctype="multipart/form-data">
                   @csrf
                 <div class="form-row">
@@ -25,7 +22,7 @@
                 @error('name') <p class="text-danger">{{ $message }}</p>@enderror
                   </div>
                   <div class="form-group col-md-12">
-                    <label for="email">Email address</label>
+                    <label for="email">Email Address</label>
                     <input type="email" class="form-control" name="email" id="email" placeholder="Enter email" wire:model="email">
                 @error('email') <p class="text-danger">{{ $message }}</p>@enderror
                   </div>
@@ -59,20 +56,21 @@
                     <input type="file" class="form-control" wire:model="image">
                      @error('image') <p class="text-danger">{{ $message }}</p>@enderror
                   </div>
-                  @if($image)
-                  <img style="margin-left: 200px" src="{{ $image->temporaryUrl() }}" width="60px">
-                  @endif
+               {{--  @if($image)
+              <img style="margin-left: 200px" src="{{ $image->temporaryUrl() }}" width="120px">
+              @endif --}}
                   </div>
                  
-                   </form>
+                  
                   </div>
                  
       </div>
       <div class="modal-footer" style="background-color: lightgreen;color: white">
         <button type="button" class="btn btn-danger font-weight-bold" data-dismiss="modal">Close</button>
         <button type="button" class="btn btn-primary font-weight-bold" wire:click.prevent="store()">Add Student</button>
-        
+         </form>
       </div>
     </div>
   </div>
+</div>
 </div>
